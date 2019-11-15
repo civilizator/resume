@@ -1,0 +1,147 @@
+$icons-width: 22px;
+$left-right-width: 400px;
+
+.content {
+  //line-height: 24px;
+  display: grid;
+  grid-template-areas: "header header" " left right";
+  grid-template-rows: auto 1fr;
+  grid-template-columns: 1fr 1fr;
+  row-gap: 0;
+  column-gap: 0;
+  padding-top: 80px;
+
+  .image {
+    text-align: center;
+
+    img {
+      width: 56px;
+    }
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    padding-top: 6px;
+    margin-bottom: 12px;
+    letter-spacing: 2px;
+    //font-family: 'Roboto', sans-serif;
+    //font-family: 'Ubuntu', sans-serif;
+    font-family: 'Righteous', cursive;
+  }
+
+
+  .header {
+    grid-area: header;
+
+
+  }
+
+  .left {
+    position: relative;
+    grid-area: left;
+    text-align: right;
+    padding: 20px 60px 20px 0;
+    width: $left-right-width;
+
+    &:before {
+      position: absolute;
+      content: "";
+      box-shadow: 1px 0 0 #000;
+      height: 65%;
+      width: 2px;
+      left: auto;
+      right: -1px;
+    }
+  }
+
+  .right {
+    position: relative;
+    grid-area: right;
+    text-align: left;
+    padding: 20px 0 20px 60px;
+    width: $left-right-width;
+
+    display: grid;
+    grid-template-areas: "infoHeader infoHeader" "infoImage infoContacts";
+    grid-template-rows: auto 1fr;
+    grid-template-columns: 10fr 24fr;
+    row-gap: 0;
+    column-gap: 0;
+
+    .infoHeader {
+      grid-area: infoHeader;
+
+      //h1, h2, h3, h4, h5, h6 {
+      //  padding-top: 6px;
+      //  margin-bottom: 6px;
+      //  letter-spacing: 2px;
+      //  font-family: 'Roboto', sans-serif;
+      //}
+    }
+
+    .infoImage {
+      grid-area: infoImage;
+
+      padding-top: 20px;
+
+      img {
+        width: 98px;
+        filter: grayscale(1) contrast(1.5);
+      }
+
+    }
+
+    .infoContacts {
+      grid-area: infoContacts;
+
+      .personContact {
+        //padding-top: 10px;
+
+        .mailPhone {
+          margin-bottom: 12px;
+
+          p {
+            margin-bottom: 6px;
+
+            a {
+              position: relative;
+              padding: 0 0 0 28px;
+              color: #000;
+              //font-weight: 600;
+            }
+
+            .mail {
+
+              &:before {
+                content: url("../../../assets/ionicons/md-mail.svg");
+                width: $icons-width;
+                margin: 0;
+              }
+            }
+
+            .phone {
+
+              &:before {
+                content: url("../../../assets/ionicons/md-call.svg");
+                width: $icons-width;
+                margin: 0;
+              }
+            }
+          }
+        }
+
+        .socials {
+
+          a {
+            margin-right: 10px;
+
+            img {
+              width: $icons-width;
+            }
+          }
+        }
+
+
+      }
+    }
+  }
+}
