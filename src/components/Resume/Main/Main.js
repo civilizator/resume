@@ -1,10 +1,8 @@
 import React from "react"
 import classes from "./Main.module.scss"
-import Header from "../Header/Header"
-import Contact from "../Contact/Contact"
-import Experience from "../Experience/Experience"
-import Additionally from "../Additionally/Additionally"
-import mouse from "../../../assets/images/computer-mouse-1242648.jpg"
+
+import { Header, Contact, Experience, Additionally} from "../../index"
+
 
 const Main = (props) => {
     return (

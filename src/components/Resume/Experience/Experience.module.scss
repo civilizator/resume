@@ -28,11 +28,15 @@ $left-right-width: 400px;
   }
 
   p {
-    margin-bottom: 2px;
+    //margin-bottom: 2px;
   }
 
   .header {
     grid-area: header;
+  }
+
+  .experience, .tester {
+    margin-bottom: 12px;
   }
 
   .left {
@@ -41,6 +45,7 @@ $left-right-width: 400px;
     text-align: right;
     padding: 20px 60px 20px 0;
     width: $left-right-width;
+
 
     &:before {
       position: absolute;

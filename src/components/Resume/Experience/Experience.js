@@ -11,16 +11,29 @@ const Experience = (props) => {
                 </p>
             </div>
             <div className={ classes.left }>
-                <h2>EXPERIENCE</h2>
-                <p>My name is Stan</p>
-                <p>full name Stanislav Kovrigin</p>
-                <p>I'm live in Siberia </p>
+                <h2>SKILLS</h2>
+                <p>Functional testing •</p>
+                <p>Regression testing •</p>
+                <p>Exploratory testing •</p>
+                <p>Usability testing •</p>
+                <p>User interface testing •</p>
+                <p>Performance Testing •</p>
+                <p>Test Case Writing •</p>
+                <p>Test Case Execution •</p>
             </div>
             <div className={ classes.right }>
-                <h2>SKILLS</h2>
-                <p>My name is Stan</p>
-                <p>full name Stanislav Kovrigin</p>
-                <p>I'm live in Siberia </p>
+                <div className={classes.experience}>
+                    <h2>EXPERIENCE</h2>
+                    <p>May 2014 - present</p>
+                    <p>uTest www.utest.com</p>
+                </div>
+
+                <div className={classes.tester}>
+                    <h5>TESTER</h5>
+                    <p>Manual testing web and mobile app</p>
+                    <p>Performing or writing test cases</p>
+                    <p>Create bug reports or reproduction of created reports</p>
+                </div>
             </div>
         </div>
     )

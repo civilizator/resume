@@ -2,6 +2,8 @@ $left-right-width: 400px;
 
 .content {
 
+
+
   display: grid;
   grid-template-areas: "header header" " left right";
   grid-template-rows: auto 1fr;
@@ -28,11 +30,20 @@ $left-right-width: 400px;
   }
 
   p {
-    margin-bottom: 2px;
+    //margin-bottom: 2px;
   }
 
   .header {
     grid-area: header;
+  }
+
+  .other {
+    margin-bottom: 12px;
+  }
+
+  .foLinks {
+    color: #000;
+    text-decoration: underline;
   }
 
   .left {
@@ -41,6 +52,18 @@ $left-right-width: 400px;
     text-align: right;
     padding: 20px 60px 20px 0;
     width: $left-right-width;
+
+    .additionallySkills {
+
+      div {
+        display: inline-flex;
+        margin: 0 8px 8px 0;
+        span {
+          padding: 2px 10px;
+          background-color: #d5d3d6;
+        }
+      }
+    }
 
     &:before {
       position: absolute;

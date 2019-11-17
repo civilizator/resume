@@ -42,6 +42,20 @@ $left-right-width: 400px;
     padding: 20px 60px 20px 0;
     width: $left-right-width;
 
+    .hello {
+      margin-bottom: 12px;
+
+
+    }
+    .city {
+      //font-weight: 900;
+      color: #000;
+      text-decoration: underline;
+    }
+    .location {
+
+    }
+
     &:before {
       position: absolute;
       content: "";
@@ -81,7 +95,7 @@ $left-right-width: 400px;
     .infoImage {
       grid-area: infoImage;
 
-      padding-top: 20px;
+      padding-top: 40px;
 
       img {
         width: 98px;
@@ -100,13 +114,22 @@ $left-right-width: 400px;
           margin-bottom: 12px;
 
           p {
-            margin-bottom: 6px;
+            //margin-bottom: 6px;
 
             a {
               position: relative;
               padding: 0 0 0 28px;
               color: #000;
               //font-weight: 600;
+            }
+
+            .phone {
+
+              &:before {
+                content: url("../../../assets/ionicons/md-call.svg");
+                width: $icons-width;
+                margin: 0;
+              }
             }
 
             .mail {
@@ -118,10 +141,10 @@ $left-right-width: 400px;
               }
             }
 
-            .phone {
+            .skype {
 
               &:before {
-                content: url("../../../assets/ionicons/md-call.svg");
+                content: url("../../../assets/ionicons/logo-skype.svg");
                 width: $icons-width;
                 margin: 0;
               }
