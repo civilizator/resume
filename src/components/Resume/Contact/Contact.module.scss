@@ -41,6 +41,11 @@
 
     }
 
+    @media screen and (max-width: 540px) {
+      display: block;
+      padding-top: 0;
+    }
+
     .infoContacts {
       grid-area: infoContacts;
 
