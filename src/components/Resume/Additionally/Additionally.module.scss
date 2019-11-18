@@ -8,8 +8,7 @@
   }
 
   .foLinks {
-    color: #000;
-    text-decoration: underline;
+    @include styleForLinks;
   }
 
   .left {

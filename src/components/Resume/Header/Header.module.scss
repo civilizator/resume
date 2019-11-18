@@ -5,20 +5,23 @@
     font-family: 'Kaushan Script', cursive;
     margin-bottom: 18px;
     letter-spacing: 10px;
-    //color: #9c9595;
-    //text-shadow: #e0e0e0 1px 1px 0, 0 1px 0 #fbf6f6;
   }
 
   .names {
     letter-spacing: 2px;
     text-align: center;
     font-size: 38px;
-    //font-family: 'Roboto', sans-serif;
-    //font-family: 'Open Sans', sans-serif;
-    //font-family: 'Ubuntu', sans-serif;
     font-family: 'Righteous', cursive;
   }
 
+  @media screen and (max-width: 980px) {
+    .resume {
+      text-align: left;
+    }
+    .names {
+      text-align: left;
+      font-size: 30px;
+    }
+  }
 
-  //background: linear-gradient(90deg, #b9b3da 0%, #cfcbe8 35%, #d0cde4 100%);
 }

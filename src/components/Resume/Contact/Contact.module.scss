@@ -11,8 +11,7 @@
     }
 
     .city {
-      color: #000;
-      text-decoration: underline;
+      @include styleForLinks;
     }
   }
 
@@ -55,6 +54,7 @@
               position: relative;
               padding: 0 0 0 30px;
               color: #000;
+              @include styleForLinks;
             }
 
             .phone {
@@ -84,7 +84,6 @@
         }
 
         .socials {
-
           a {
             margin-right: 10px;
 
