@@ -6,7 +6,7 @@ import paper from "../../../assets/ionicons/md-paper.svg"
 
 const Contact = (props) => {
     return (
-        <div className={ classes.content }>
+        <div className={ classes.contentContact }>
             <div className={ classes.header }>
                 <p className={ classes.image }>
                     <img alt="Contact" src={ paper }/>

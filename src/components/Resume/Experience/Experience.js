@@ -4,7 +4,7 @@ import checkbox from "./../../../assets/ionicons/md-checkbox-outline.svg"
 
 const Experience = (props) => {
     return (
-        <div className={ classes.content }>
+        <div className={ classes.contentExperience }>
             <div className={ classes.header }>
                 <p className={classes.image}>
                     <img alt="Experience" src={ checkbox }/>

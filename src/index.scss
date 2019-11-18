@@ -56,4 +56,6 @@ a {
   outline: none;
 }
 
-
+::selection {
+  background: #ffb7b7;
+}

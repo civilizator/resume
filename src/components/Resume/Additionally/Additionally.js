@@ -4,7 +4,7 @@ import laptop from "../../../assets/ionicons/md-laptop.svg"
 
 const Additionally = (props) => {
     return (
-        <div className={ classes.content }>
+        <div className={ classes.contentAdditionally }>
             <div className={ classes.header }>
                 <p className={ classes.image }>
                     <img alt="Experience" src={ laptop }/>
@@ -14,22 +14,22 @@ const Additionally = (props) => {
                 <h2>ADDITIONALLY SKILLS</h2>
 
                 <div className={ classes.additionallySkills }>
-                    <div><span>Automated testing (Selenium WebDriver)</span></div>
-                    <div><span>JavaScript</span></div>
-                    <div><span>Node.js</span></div>
-                    <div><span>ReactJS</span></div>
-                    <div><span>Redux</span></div>
-                    <div><span>JSON API</span></div>
-                    <div><span>KoaJS</span></div>
-                    <div><span>ExpressJS</span></div>
-                    <div><span>Axios</span></div>
-                    <div><span>Gulp</span></div>
-                    <div><span>AJAX</span></div>
-                    <div><span>MongoDB</span></div>
-                    <div><span>MySQL</span></div>
-                    <div><span>HTML</span></div>
-                    <div><span>SASS</span></div>
-                    <div><span>CSS</span></div>
+                    <div className={classes.skills}><span>Automation ( JS + WebDriver)</span></div>
+                    <div className={classes.skills}><span>JavaScript</span></div>
+                    <div className={classes.skills}><span>Node.js</span></div>
+                    <div className={classes.skills}><span>ReactJS</span></div>
+                    <div className={classes.skills}><span>Redux</span></div>
+                    <div className={classes.skills}><span>KoaJS</span></div>
+                    <div className={classes.skills}><span>ExpressJS</span></div>
+                    <div className={classes.skills}><span>Axios</span></div>
+                    <div className={classes.skills}><span>Gulp</span></div>
+                    <div className={classes.skills}><span>AJAX</span></div>
+                    <div className={classes.skills}><span>JSON API</span></div>
+                    <div className={classes.skills}><span>MongoDB</span></div>
+                    <div className={classes.skills}><span>MySQL</span></div>
+                    <div className={classes.skills}><span>HTML</span></div>
+                    <div className={classes.skills}><span>SASS</span></div>
+                    <div className={classes.skills}><span>CSS</span></div>
                 </div>
 
             </div>

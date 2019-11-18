@@ -1,44 +1,10 @@
-$left-right-width: 400px;
+@import "../common";
 
-.content {
-
-
-
-  display: grid;
-  grid-template-areas: "header header" " left right";
-  grid-template-rows: auto 1fr;
-  grid-template-columns: 1fr 1fr;
-  row-gap: 0;
-  column-gap: 0;
-  padding-top: 80px;
-
-  .image {
-    text-align: center;
-
-    img {
-      width: 56px;
-    }
-  }
-
-  h1, h2, h3, h4, h5, h6 {
-    padding-top: 6px;
-    margin-bottom: 12px;
-    letter-spacing: 2px;
-    //font-family: 'Roboto', sans-serif;
-    //font-family: 'Ubuntu', sans-serif;
-    font-family: 'Righteous', cursive;
-  }
-
-  p {
-    //margin-bottom: 2px;
-  }
-
-  .header {
-    grid-area: header;
-  }
+.contentAdditionally {
+  @include content;
 
   .other {
-    margin-bottom: 12px;
+    margin-bottom: $margin-bottom-inner-content;
   }
 
   .foLinks {
@@ -47,15 +13,11 @@ $left-right-width: 400px;
   }
 
   .left {
-    position: relative;
-    grid-area: left;
-    text-align: right;
-    padding: 20px 60px 20px 0;
-    width: $left-right-width;
+    @include contentLeft;
 
     .additionallySkills {
 
-      div {
+      .skills {
         display: inline-flex;
         margin: 0 8px 8px 0;
         span {
@@ -64,23 +26,9 @@ $left-right-width: 400px;
         }
       }
     }
-
-    &:before {
-      position: absolute;
-      content: "";
-      box-shadow: 1px 0 0 #000;
-      height: 65%;
-      width: 2px;
-      left: auto;
-      right: -1px;
-    }
   }
 
   .right {
-    position: relative;
-    grid-area: right;
-    text-align: left;
-    padding: 20px 0 20px 60px;
-    width: $left-right-width;
+    @include contentRight;
   }
 }
