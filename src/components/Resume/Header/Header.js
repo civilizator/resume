@@ -1,11 +1,12 @@
 import React from "react"
 import classes from "./Header.module.scss"
 
-const Header = () => {
+const Header = (props) => {
+    const { resume, names } = props.headerInfo
     return (
-        <div className={classes.header}>
-            <h3 className={classes.resume}>Resume</h3>
-            <h1 className={classes.names}>STANISLAV KOVRIGIN</h1>
+        <div className={ classes.header }>
+            <h3 className={ classes.resume }>{ resume }</h3>
+            <h1 className={ classes.names }>{ names }</h1>
         </div>
     )
 }

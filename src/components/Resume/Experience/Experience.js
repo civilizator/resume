@@ -1,15 +1,16 @@
 import React from "react"
 import classes from "./Experience.module.scss"
 import checkbox from "./../../../assets/ionicons/md-checkbox-outline.svg"
+import IconHeader from "../subComponents/IconHeader"
 
 const Experience = (props) => {
     return (
+
         <div className={ classes.contentExperience }>
-            <div className={ classes.header }>
-                <p className={classes.image}>
-                    <img alt="Experience" src={ checkbox }/>
-                </p>
-            </div>
+
+            <IconHeader classNameHeader={ classes.header } classNameImage={ classes.image } icon={checkbox}/>
+
+
             <div className={ classes.left }>
                 <h2>SKILLS</h2>
                 <ul>
@@ -23,6 +24,8 @@ const Experience = (props) => {
                     <li>Test Case Execution</li>
                 </ul>
             </div>
+
+
             <div className={ classes.right }>
                 <div className={classes.experience}>
                     <h2>EXPERIENCE</h2>

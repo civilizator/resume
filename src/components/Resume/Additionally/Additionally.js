@@ -1,15 +1,15 @@
 import React from "react"
 import classes from "./Additionally.module.scss"
 import laptop from "../../../assets/ionicons/md-laptop.svg"
+import IconHeader from "../subComponents/IconHeader"
 
 const Additionally = (props) => {
     return (
         <div className={ classes.contentAdditionally }>
-            <div className={ classes.header }>
-                <p className={ classes.image }>
-                    <img alt="Experience" src={ laptop }/>
-                </p>
-            </div>
+
+            <IconHeader classNameHeader={ classes.header } classNameImage={ classes.image } icon={laptop}/>
+
+
             <div className={ classes.left }>
                 <h2>ADDITIONALLY SKILLS</h2>
 
@@ -33,6 +33,8 @@ const Additionally = (props) => {
                 </div>
 
             </div>
+
+
             <div className={ classes.right }>
 
                 <div className={ classes.other }>
