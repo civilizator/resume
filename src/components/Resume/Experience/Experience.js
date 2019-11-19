@@ -12,14 +12,16 @@ const Experience = (props) => {
             </div>
             <div className={ classes.left }>
                 <h2>SKILLS</h2>
-                <p>Functional testing •</p>
-                <p>Regression testing •</p>
-                <p>Exploratory testing •</p>
-                <p>Usability testing •</p>
-                <p>User interface testing •</p>
-                <p>Performance Testing •</p>
-                <p>Test Case Writing •</p>
-                <p>Test Case Execution •</p>
+                <ul>
+                    <li>Functional testing</li>
+                    <li>Regression testing</li>
+                    <li>Exploratory testing</li>
+                    <li>Usability testing</li>
+                    <li>User interface testing</li>
+                    <li>Performance Testing</li>
+                    <li>Test Case Writing</li>
+                    <li>Test Case Execution</li>
+                </ul>
             </div>
             <div className={ classes.right }>
                 <div className={classes.experience}>

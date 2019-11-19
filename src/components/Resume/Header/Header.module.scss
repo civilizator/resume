@@ -20,8 +20,12 @@
     }
     .names {
       text-align: left;
-      font-size: 30px;
+      font-size: 36px;
     }
+  }
+
+  @media screen and (max-width: 540px) {
+    margin-bottom: 46px;
   }
 
 }

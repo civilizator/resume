@@ -42,6 +42,10 @@
     }
 
     @media screen and (max-width: 540px) {
+      .infoImage {
+        padding-top: 0;
+      }
+
       display: block;
       padding-top: 0;
     }
@@ -59,30 +63,37 @@
               position: relative;
               padding: 0 0 0 30px;
               color: #000;
+
               @include styleForLinks;
+              @media screen and (max-width: 540px) {
+                padding: 0 0 0 38px;
+                font-size: 20px;
+                line-height: 40px;
+              }
+
             }
 
             .phone {
               &:before {
                 content: url("../../../assets/ionicons/md-call.svg");
-                width: $icons-width;
                 margin: 0;
+                @include iconsWidth
               }
             }
 
             .mail {
               &:before {
                 content: url("../../../assets/ionicons/md-mail.svg");
-                width: $icons-width;
                 margin: 0;
+                @include iconsWidth
               }
             }
 
             .skype {
               &:before {
                 content: url("../../../assets/ionicons/logo-skype.svg");
-                width: $icons-width;
                 margin: 0;
+                @include iconsWidth
               }
             }
           }
@@ -91,9 +102,11 @@
         .socials {
           a {
             margin-right: 10px;
-
+            @media screen and (max-width: 540px) {
+              margin-right: 18px;
+            }
             img {
-              width: $icons-width;
+              @include iconsWidth
             }
           }
         }

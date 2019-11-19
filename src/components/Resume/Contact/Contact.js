@@ -1,8 +1,13 @@
 import React from "react"
 import classes from "./Contact.module.scss"
 import myPhoto from "./../../../assets/images/argaatas.png"
-import { logoFacebook, logoLinkedin, logoTwitter } from "../../../assets/ionicons"
+
 import paper from "../../../assets/ionicons/md-paper.svg"
+import logoFacebook from "../../../assets/ionicons/logo-facebook.svg"
+import logoLinkedin from "../../../assets/ionicons/logo-linkedin.svg"
+import logoTwitter from "../../../assets/ionicons/logo-twitter.svg"
+
+
 
 const Contact = (props) => {
     return (
@@ -77,7 +82,7 @@ const Contact = (props) => {
                                 <a target="_blank" rel="noopener noreferrer"
                                    href="https://www.facebook.com/people/Stanislav-Kovrigin/100001788268020"
                                    title="Go to facebook">
-                                    <img className={classes.facebook} alt="Facebook" src={ logoFacebook }/>
+                                    <img alt="Facebook" src={ logoFacebook }/>
                                 </a>
                             </p>
                         </div>

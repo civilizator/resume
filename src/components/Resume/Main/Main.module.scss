@@ -2,6 +2,7 @@
   position: relative;
   padding: 20px;
   min-height: 100%;
+
   background: #D7D3EC;
   background: linear-gradient(90deg, #b9b3da 0%, #cfcbe8 35%, #d0cde4 100%);
 
@@ -28,6 +29,11 @@
     @media screen and (max-width: 980px) {
       padding: 60px 60px 120px;
     }
+
+    @media screen and (max-width: 540px) {
+      font-size: 20px;
+      line-height: 32px;
+    }
   }
 
   @media screen and (max-width: 600px) {
@@ -38,9 +44,14 @@
         width: 100%;
       box-sizing: border-box;
       @media screen and (max-width: 540px) {
-        padding: 60px 20px 120px;
+        padding: 28px 20px 40px;
 
       }
     }
+  }
+
+  @media screen and (max-width: 290px) {
+    width: 290px;
+
   }
 }

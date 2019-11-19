@@ -1,6 +1,14 @@
-$icons-width: 22px;
+
 $left-right-width: 400px;
 $margin-bottom-inner-content: 12px;
+
+@mixin iconsWidth {
+  width: 22px;
+  @media screen and (max-width: 540px) {
+    width: 30px;
+  }
+}
+
 
 @mixin content {
   display: grid;
@@ -13,6 +21,10 @@ $margin-bottom-inner-content: 12px;
 
   @media screen and (max-width: 980px) {
     display: block;
+  }
+
+  @media screen and (max-width: 540px) {
+    padding-top: 0;
   }
 
   h1, h2, h3, h4, h5, h6 {
@@ -46,10 +58,7 @@ $margin-bottom-inner-content: 12px;
   text-align: right;
   padding: 20px 60px 20px 0;
   width: $left-right-width;
-
-  @media screen and (max-width: 540px) {
-    width: auto;
-  }
+  direction: rtl;
 
   &:before {
     position: absolute;
@@ -64,9 +73,17 @@ $margin-bottom-inner-content: 12px;
   @media screen and (max-width: 980px) {
     text-align: left;
     padding: 20px 0 20px;
+    direction: initial;
+
     &:before {
       height: 0;
     }
+  }
+
+  @media screen and (max-width: 540px) {
+    width: auto;
+    padding: 0;
+    margin-bottom: 40px;
   }
 }
 
@@ -83,6 +100,8 @@ $margin-bottom-inner-content: 12px;
 
   @media screen and (max-width: 540px) {
     width: auto;
+    padding: 0;
+    margin-bottom: 40px;
   }
 }
 
