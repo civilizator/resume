@@ -3,6 +3,14 @@
   padding: 20px;
   min-height: 100%;
 
+  @media screen and (max-width: 1099px) {
+    padding: 20px 0 20px;
+  }
+
+  @media screen and (max-width: 980px) {
+    padding: 20px;
+  }
+
   background: #D7D3EC;
   background: linear-gradient(90deg, #b9b3da 0%, #cfcbe8 35%, #d0cde4 100%);
 
@@ -23,7 +31,7 @@
     border-radius: 1px;
 
     @media screen and (max-width: 1099px) {
-      padding: 60px 0 120px;
+      padding: 60px 30px 120px;
     }
 
     @media screen and (max-width: 980px) {
@@ -43,6 +51,7 @@
       box-shadow: 0 0 0 #00000094;
         width: 100%;
       box-sizing: border-box;
+
       @media screen and (max-width: 540px) {
         padding: 28px 20px 40px;
 

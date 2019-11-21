@@ -12,7 +12,7 @@ class AdditionallyComponent extends React.Component {
 
 const mapStateProps = (state) => {
     return {
-        additionallyInfo: state.additionally.additionallyInfo
+        additionallyInfo: state.additionally
     }
 }
 

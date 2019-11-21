@@ -1,6 +1,9 @@
-const initialState = {
+const TOGGLE_LANGUAGE_EXPERIENCE = "TOGGLE-LANGUAGE-EXPERIENCE"
 
-    experienceInfo: {
+export const dataExperience = {
+
+    experienceEnglish: {
+
         sectionLeft: {
             title: "SKILLS",
 
@@ -31,11 +34,60 @@ const initialState = {
 
         }
 
+    },
+
+    experienceRussian: {
+
+        sectionLeft: {
+            title: "НАВЫКИ И УМЕНИЯ",
+
+            skills: [
+                "Функциональное тестирование",
+                "Регрессионное тестирование",
+                "Исследовательское тестирование",
+                "Тестирование удобства пользования",
+                "Тестирование пользовательского интерфейса",
+                "Тестирование производительности",
+                "Написание тестового сценария",
+                "Выполнение тестового сценария"
+            ]
+        },
+
+        sectionRight: {
+            title: "ОПЫТ",
+
+            termWork: "Май 2014 - по настоящее время",
+            whereWorked: "uTest www.utest.com",
+
+            titleProfession: "ТЕСТЕР",
+            whatDid: [
+                "Ручное тестирование веб и мобильных приложений",
+                "Выполнение или написание тестовых сценариев",
+                "Создание отчетов об ошибках или воспроизведение созданных отчетов"
+            ]
+
+        }
+
     }
 }
 
+const initialState = dataExperience.experienceEnglish
+
 const experienceReducer = (state = initialState, action) => {
-    return state
+
+    switch (action.type) {
+        case TOGGLE_LANGUAGE_EXPERIENCE: {
+            return {
+                ...state = action.languages
+            }
+        }
+        default:
+            return state
+    }
+}
+
+export const experienceLanguageCreator = (languages) => {
+    return { type: TOGGLE_LANGUAGE_EXPERIENCE, languages }
 }
 
 export default experienceReducer

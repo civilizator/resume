@@ -70,6 +70,10 @@ $margin-bottom-inner-content: 12px;
     right: -1px;
   }
 
+  @media screen and (max-width: 1099px) {
+    padding: 20px 40px 20px 0;
+  }
+
   @media screen and (max-width: 980px) {
     text-align: left;
     padding: 20px 0 20px;
@@ -93,6 +97,10 @@ $margin-bottom-inner-content: 12px;
   text-align: left;
   padding: 20px 0 20px 60px;
   width: $left-right-width;
+
+  @media screen and (max-width: 1099px) {
+    padding: 20px 0 20px 40px;
+  }
 
   @media screen and (max-width: 980px) {
     padding: 20px 0 20px;

@@ -12,16 +12,43 @@
     text-align: center;
     font-size: 38px;
     font-family: 'Righteous', cursive;
+    margin-bottom: 52px;
+  }
+
+  .containerButtonsLanguage {
+    text-align: center;
+
+    .buttonLanguage {
+      outline: none;
+      border: none;
+      padding: 8px 12px;
+      position: relative;
+      cursor: pointer;
+      border-radius: 3px;
+      margin-right: 10px;
+
+      &:hover {
+      background: #eaeaea;
+      }
+
+      &:active {
+      box-shadow: -1px -1px 0 0 rgba(0, 0, 0, 0.09), inset -1px -1px 0 0 #f1f1f182;
+      }
+    }
   }
 
   @media screen and (max-width: 980px) {
-    .resume {
+
+    .resume,
+    .containerButtonsLanguage {
       text-align: left;
     }
+
     .names {
       text-align: left;
       font-size: 36px;
     }
+
   }
 
   margin-bottom: 38px;

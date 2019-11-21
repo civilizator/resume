@@ -1,21 +1,21 @@
 import { combineReducers, createStore } from "redux"
 
-import headerReducer from "./header-reducer"
-import contactReducer from "./contact-reducer"
-import experienceReducer from "./experience-reducer"
-import additionallyReducer from "./additionally-reducer"
+import header from "./header-reducer"
+import contact from "./contact-reducer"
+import experience from "./experience-reducer"
+import additionally from "./additionally-reducer"
 
 const reducers = combineReducers( {
-        header: headerReducer,
-        contact: contactReducer,
-        experience: experienceReducer,
-        additionally: additionallyReducer
+        header,
+        contact,
+        experience,
+        additionally
     }
 )
 
 const store = createStore( reducers )
 
 
-window.store = store //store.getState()
+// window.store = store //store.getState()
 
 export default store

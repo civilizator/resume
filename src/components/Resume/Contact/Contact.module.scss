@@ -65,6 +65,7 @@
               color: #000;
 
               @include styleForLinks;
+
               @media screen and (max-width: 540px) {
                 padding: 0 0 0 38px;
                 font-size: 20px;

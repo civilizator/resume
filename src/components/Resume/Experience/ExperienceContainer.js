@@ -5,14 +5,14 @@ import Experience from "./Experience"
 class ExperienceComponent extends React.Component {
     render() {
         return (
-            <Experience experienceInfo={this.props.experienceInfo}/>
+            <Experience experienceInfo={this.props.experience}/>
         )
     }
 }
 
 const mapStateProps = (state) => {
     return {
-        experienceInfo: state.experience.experienceInfo
+        experience: state.experience
     }
 }
 

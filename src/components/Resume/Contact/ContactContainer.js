@@ -12,7 +12,7 @@ class ContactComponent extends React.Component {
 
 const mapStateProps = (state) => {
     return {
-        contactInfo: state.contact.contactInfo
+        contactInfo: state.contact
     }
 }
 
