@@ -2,10 +2,18 @@ import React from 'react'
 import { Main } from "./components"
 import "./App.scss"
 
-
-const App = (props) => {
+const LoaderComponent = () => {
     return (
-        <Main />
+        <div className="containerLoader">
+            <div className="ldsHourglass">
+            </div>
+        </div>
+    )
+}
+
+const App = () => {
+    return (
+        <Main Loader={ <LoaderComponent/> }/>
     )
 }
 

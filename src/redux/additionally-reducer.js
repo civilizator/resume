@@ -50,7 +50,7 @@ export const dataAdditionally = {
             titleLanguages: "ЯЗЫКИ",
             languages: [
                 "Русский: Родной",
-                "Английский: Только писмо и чтение"
+                "Английский: Только письмо и чтение"
             ]
         }
     }
