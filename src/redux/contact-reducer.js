@@ -17,7 +17,7 @@ export const dataContact = {
         },
 
         sectionRight: {
-            myPhoto: myPhoto,
+            myPhoto,
             title: "CONTACTS",
 
             phoneLink: "tel://+79086535896",
@@ -59,7 +59,7 @@ export const dataContact = {
         },
 
         sectionRight: {
-            myPhoto: myPhoto,
+            myPhoto,
             title: "КОНТАКТЫ",
 
             phoneLink: "tel://+79086535896",

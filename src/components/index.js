@@ -1,4 +1,4 @@
-import Main from "./Resume/Main/Main"
+import Main from "./Resume/Main/MainContainer"
 import Header from "./Resume/Header/HeaderContainer"
 import Contact from "./Resume/Contact/ContactContainer"
 import Experience from "./Resume/Experience/ExperienceContainer"

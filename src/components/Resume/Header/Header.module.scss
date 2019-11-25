@@ -51,10 +51,14 @@
 
   }
 
-  margin-bottom: 38px;
+  //margin-bottom: 38px;
 
   @media screen and (max-width: 540px) {
     margin-bottom: 46px;
+
+    .names {
+      margin-bottom: 44px;
+    }
   }
 
 }
