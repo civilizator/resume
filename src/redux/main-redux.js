@@ -2,7 +2,7 @@
 const IS_FETCHING_LOADER = "IS-FETCHING"
 
 const initialState = {
-    isFetching: !1
+    isFetching: !0
 }
 
 const mainReducer = (state = initialState, action) => {

@@ -5,22 +5,25 @@ import { loaderCreator } from "../../../redux/main-redux"
 
 
 class MainContainer extends React.Component {
-    Loader = this.props.Loader
 
     constructor(props) {
-        super( props );
-        this.handleLoad = this.handleLoad.bind( this );
+        super( props )
+        this.handleLoad = this.handleLoad.bind( this )
     }
 
     componentDidMount() {
-        console.log("HI")
-        this.props.preloader(!0)
-        window.addEventListener( 'load', this.handleLoad );
+        // document.body.classList.add('custom-loader');
+        console.log( "HI" )
+        this.props.preloader( !0 )
+        window.addEventListener( 'load', this.handleLoad )
     }
 
     handleLoad() {
-        console.log("BY")
-        this.props.preloader(!1)
+        // document.body.classList.remove('custom-loader');
+        setTimeout( () => {
+            console.log( "BY" )
+            this.props.preloader( !1 )
+        }, 1000 )
     }
 
     componentWillUnmount() {
@@ -28,10 +31,13 @@ class MainContainer extends React.Component {
     }
 
     render() {
+        // console.log( this.props.loader )
         return (
             <>
-                {/*{ this.props.isFetching && this.Loader }*/}
                 <Main/>
+                {/*{ this.props.isFetching && this.props.PreloaderContainer }*/ }
+
+                {/*{this.props.PreloaderContainer}*/ }
             </>
         )
     }
@@ -46,11 +52,11 @@ const mapStateProps = (state) => {
 }
 
 const mapDispatchToProps = (dispatch) => {
-        return {
-            preloader: (event) => {
-                dispatch( loaderCreator( event ) )
-            }
+    return {
+        preloader: (event) => {
+            dispatch( loaderCreator( event ) )
         }
+    }
 }
 
-export default connect(mapStateProps, mapDispatchToProps)( MainContainer )
+export default connect( mapStateProps, mapDispatchToProps )( MainContainer )
