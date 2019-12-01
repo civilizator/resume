@@ -36,7 +36,6 @@ class MainContainer extends React.Component {
             <>
                 <Main/>
                 {/*{ this.props.isFetching && this.props.PreloaderContainer }*/ }
-
                 {/*{this.props.PreloaderContainer}*/ }
             </>
         )
