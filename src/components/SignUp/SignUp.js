@@ -14,6 +14,7 @@ import Typography from '@material-ui/core/Typography'
 import { makeStyles } from '@material-ui/core/styles'
 import Container from '@material-ui/core/Container'
 // https://material-ui.com/
+import { useForm, useField, splitFormProps } from "react-form" // https://github.com/tannerlinsley/react-form
 
 import { Copyright } from "./../MaterialUI/Copyright"
 
@@ -37,9 +38,64 @@ const useStyles = makeStyles( theme => ( {
     },
 } ) )
 
+import { SendToFakeServer as sendToFakeServer } from "./../../dev/FackeServer"
+
+const InputField = React.forwardRef( (props, ref) => {
+
+    const [ field, fieldOptions, rest ] = splitFormProps( props )
+    const {
+        meta: { error, isTouched, isValidating, message },
+        getInputProps
+    } = useField( field, fieldOptions )
+
+    return (
+        <>
+            <TextField { ...getInputProps( { ref, ...rest } ) }
+                       variant="outlined"
+                       margin="normal"
+                       required
+                       fullWidth
+                       id="email"
+                       label="Enter Email Address"
+                       name="email"
+                       autoComplete="email"
+                       autoFocus
+                       error={ !!error }
+                // helperText={error} /*error message*/
+            />
+            {
+                /* Let's inline some validation and error information for our field */
+            }
+            {
+                isValidating ? ( <em>Validating...</em> ) : isTouched &&
+                error ? ( <strong>{ error }</strong> ) : message
+                    ? ( <small>{ message }</small> ) : null
+            }
+        </>
+    )
+} )
+
 
 export default function SignUp() {
+
     const classes = useStyles()
+
+    const defaultValues = React.useMemo( () => ( {
+            name: "tanner",
+            email: "tanner@gmail.com",
+        } ), []
+    )
+    const {
+        Form,
+        meta: { isSubmitting, canSubmit }
+    } = useForm( {
+        defaultValues,
+        onSubmit: async (values, instance) => {
+            console.log( values )
+            await sendToFakeServer( values )
+            console.log( "Huzzah!" )
+        }, debugForm: !1
+    } )
 
     return (
         <Container component="main" maxWidth="xs">
@@ -48,10 +104,8 @@ export default function SignUp() {
                 <Avatar className={ classes.avatar }>
                     <LockOutlinedIcon/>
                 </Avatar>
-                <Typography component="h1" variant="h5">
-                    Sign up
-                </Typography>
-                <form className={ classes.form } noValidate>
+                <Typography component="h1" variant="h5">Sign up</Typography>
+                <Form className={ classes.form } noValidate>
                     <Grid container spacing={ 2 }>
                         <Grid item xs={ 12 }>
                             <TextField
@@ -123,7 +177,7 @@ export default function SignUp() {
                             </Link>
                         </Grid>
                     </Grid>
-                </form>
+                </Form>
             </div>
             <Box mt={ 5 }>
                 <Copyright/>
