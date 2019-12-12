@@ -1,6 +1,6 @@
+// eslint-disable-next-line
 import React from "react"
 import { Link } from "react-router-dom"
-
 import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
 import CssBaseline from '@material-ui/core/CssBaseline';
@@ -42,6 +42,7 @@ const useStyles = makeStyles( theme => ( {
 } ) )
 
 const InputField = React.forwardRef( (props, ref) => {
+
     const [ field, fieldOptions, rest ] = splitFormProps( props )
     const {
         meta: { error, isTouched, isValidating, message },
@@ -76,7 +77,8 @@ const InputField = React.forwardRef( (props, ref) => {
 } )
 
 const ResetPassword = () => {
-    const classes = useStyles();
+
+    const classes = useStyles()
     const defaultValues = React.useMemo( () => ( {
             name: "tanner",
             age: "29",
