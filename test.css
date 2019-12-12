@@ -1,0 +1,41 @@
+html,
+body {
+    background-color: gray;
+}
+
+p {
+    color: green;
+}
+
+p:not(:nth-last-child(2)) {
+    margin-top: 0;
+    margin-bottom: 5px;
+}
+
+p:nth-child(2) {
+    color: blue;
+}
+
+p:nth-last-child(2) {
+    color: pink;
+}
+
+p:nth-last-child(3) {
+    color: purple;
+}
+
+div:nth-child(3) + p {
+    color: yellow;
+}
+
+div:nth-child(3) > p {
+    width: 200px;
+    height: 50px;
+    background-color: white;
+    color: red;
+    text-align: center;
+}
+
+.hidden {
+    display: none;
+}

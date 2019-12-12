@@ -7,15 +7,17 @@ export const PreloaderContainer = () => {
     const [ isRemove, setRemove ] = useState( !0 )
 
     useEffect( () => {
+
             setTimeout( () => {
 
                 setLoader( !1 )
 
                 setTimeout( () => { setRemove( !1 ) }, 300 )
 
-            }, 1000 )
+            }, 10 )
         },
         [ isLoader, isRemove ]
+
     )
 
     const containerLoader = [ "container-loader" ]
