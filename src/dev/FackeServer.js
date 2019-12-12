@@ -1,7 +1,6 @@
-import React from "react"
 
-export const SendToFakeServer = async (values) => {
-    await new Promise( resolve => setTimeout( resolve, 1000 ) )
+export const SendToFakeServer = async (values, time = 1000) => {
+    await new Promise( resolve => setTimeout( resolve, time ) )
     return values
 }
 

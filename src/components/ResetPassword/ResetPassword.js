@@ -13,23 +13,13 @@ import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
-
+// https://material-ui.com/
 import { useForm, useField, splitFormProps } from "react-form" // https://github.com/tannerlinsley/react-form
+
 import { SendToFakeServer as sendToFakeServer } from "./../../dev/FackeServer"
+import { checkEmail } from "./ValidateEmail"
 
-
-const Copyright = () => {
-    return (
-        <Typography variant="body2" color="textSecondary" align="center">
-            { 'Copyright © ' }
-            <Link color="inherit" to="/">
-                resume for Stan
-            </Link>{ ' ' }
-            { new Date().getFullYear() }
-            { '.' }
-        </Typography>
-    );
-}
+import {Copyright} from "./../MaterialUI/Copyright"
 
 const useStyles = makeStyles( theme => ( {
     paper: {
@@ -49,32 +39,7 @@ const useStyles = makeStyles( theme => ( {
     submit: {
         margin: theme.spacing( 3, 0, 2 ),
     },
-} ) );
-
-
-const validateEmail = (email) => {
-    const re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
-    return re.test( String( email ).toLowerCase() )
-}
-
-const checkEmail = async (value) => {
-
-    if (!value) {
-        return "Email is required"
-    }
-
-    if (!validateEmail( value )) {
-        return "Please enter a valid email addresss"
-    }
-
-    console.log( `Checking email: ${ value }...` )
-
-    await new Promise( (resolve) => {
-        setTimeout( resolve, 2000 )
-    } )
-
-    return value === "tanner@gmail.com" ? "Email is already being used" : !1
-}
+} ) )
 
 const InputField = React.forwardRef( (props, ref) => {
     const [ field, fieldOptions, rest ] = splitFormProps( props )
@@ -94,34 +59,31 @@ const InputField = React.forwardRef( (props, ref) => {
                        label="Enter Email Address"
                        name="email"
                        autoComplete="email"
-                       autoFocus />
-            {/* Let's inline some validation and error information for our field */ }
-            { isValidating ? (
-                <em>Validating...</em>
-            ) : isTouched && error ? (
-                <strong>{ error }</strong>
-            ) : message ? (
-                <small>{ message }</small>
-            ) : null }
+                       autoFocus
+                       error={ !!error }
+                       // helperText={error} /*error message*/
+            />
+            {
+                /* Let's inline some validation and error information for our field */
+            }
+            {
+                isValidating ? ( <em>Validating...</em> ) : isTouched &&
+                error ? ( <strong>{ error }</strong> ) : message
+                    ? ( <small>{ message }</small> ) : null
+            }
         </>
     )
 } )
 
-
-
 const ResetPassword = () => {
     const classes = useStyles();
-
-    const defaultValues = React.useMemo(
-        () => ( {
+    const defaultValues = React.useMemo( () => ( {
             name: "tanner",
             age: "29",
             email: "tanner@gmail.com",
             friends: [ "jaylen" ]
-        } ),
-        []
+        } ), []
     )
-
     const {
         Form,
         meta: { isSubmitting, canSubmit }
@@ -135,7 +97,6 @@ const ResetPassword = () => {
     } )
 
     return (
-
         <Container component="main" maxWidth="xs">
             <CssBaseline/>
             <div className={ classes.paper }>
@@ -147,6 +108,7 @@ const ResetPassword = () => {
                 <Form className={ classes.form }>
 
                     <InputField
+
                         field="email"
                         validate={ value => checkEmail(value) }
                     />

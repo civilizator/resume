@@ -15,36 +15,7 @@ import { makeStyles } from '@material-ui/core/styles'
 import Container from '@material-ui/core/Container'
 // https://material-ui.com/
 
-// const SignUp = () => {
-//     return (
-//         <div>
-//             <h1>Sign up page</h1>
-//             <ul>
-//                 <li>
-//                     <Link to="/registration">Go to for Registration</Link>
-//                 </li>
-//                 <li>
-//                     <Link to="/signin">Go to for Sign in</Link>
-//                 </li>
-//             </ul>
-//             <SignUpUI/>
-//         </div>
-//     )
-// }
-
-
-function Copyright() {
-    return (
-        <Typography variant="body2" color="textSecondary" align="center">
-            { 'Copyright © ' }
-            <Link color="inherit" to="/">
-                resume for Stan
-            </Link>{ ' ' }
-            { new Date().getFullYear() }
-            { '.' }
-        </Typography>
-    )
-}
+import { Copyright } from "./../MaterialUI/Copyright"
 
 const useStyles = makeStyles( theme => ( {
     paper: {
@@ -90,21 +61,10 @@ export default function SignUp() {
                                 required
                                 fullWidth
                                 id="firstName"
-                                label="First Name"
+                                label="Login"
                                 autoFocus
                             />
                         </Grid>
-                        {/*<Grid item xs={ 12 } sm={ 6 }>*/}
-                        {/*    <TextField*/}
-                        {/*        variant="outlined"*/}
-                        {/*        required*/}
-                        {/*        fullWidth*/}
-                        {/*        id="lastName"*/}
-                        {/*        label="Last Name"*/}
-                        {/*        name="lastName"*/}
-                        {/*        autoComplete="lname"*/}
-                        {/*    />*/}
-                        {/*</Grid>*/}
                         <Grid item xs={ 12 }>
                             <TextField
                                 variant="outlined"
@@ -125,6 +85,18 @@ export default function SignUp() {
                                 label="Password"
                                 type="password"
                                 id="password"
+                                autoComplete="current-password"
+                            />
+                        </Grid>
+                        <Grid item xs={ 12 }>
+                            <TextField
+                                variant="outlined"
+                                required
+                                fullWidth
+                                name="confirmPassword"
+                                label="Confirm Password"
+                                type="password"
+                                id="confirmPassword"
                                 autoComplete="current-password"
                             />
                         </Grid>
