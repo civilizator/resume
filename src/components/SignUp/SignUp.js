@@ -6,7 +6,6 @@ import CssBaseline from '@material-ui/core/CssBaseline'
 import TextField from '@material-ui/core/TextField'
 import FormControlLabel from '@material-ui/core/FormControlLabel'
 import Checkbox from '@material-ui/core/Checkbox'
-// import Link from '@material-ui/core/Link'
 import Grid from '@material-ui/core/Grid'
 import Box from '@material-ui/core/Box'
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined'
@@ -16,6 +15,11 @@ import Container from '@material-ui/core/Container'
 // https://material-ui.com/
 
 import { Copyright } from "./../MaterialUI/Copyright"
+import { useForm } from "react-form" // https://github.com/tannerlinsley/react-form
+import { SendToFakeServer as sendToFakeServer } from "../../dev/FackeServer"
+import { checkEmailSIgnUp } from "./ValidateEmailSignUp"
+import { EmailFieldSignUp } from "./EmailFieldSignUp"
+import { UsernameFieldSignUp } from "./UsernameFieldSignUp"
 
 const useStyles = makeStyles( theme => ( {
     paper: {
@@ -38,44 +42,47 @@ const useStyles = makeStyles( theme => ( {
 } ) )
 
 
+
 export default function SignUp() {
     const classes = useStyles()
+
+    const defaultValues = React.useMemo( () => ( {
+            email: "tanner@gmail.com"
+        } ), []
+    )
+    const {
+        Form,
+        meta: { isSubmitting, canSubmit }
+    } = useForm( {
+        // defaultValues,
+        onSubmit: async (values, instance) => {
+            console.log( values )
+            await sendToFakeServer( values )
+            console.log( "Huzzah!" )
+        }, debugForm: !1
+    } )
 
     return (
         <Container component="main" maxWidth="xs">
             <CssBaseline/>
+
             <div className={ classes.paper }>
-                <Avatar className={ classes.avatar }>
-                    <LockOutlinedIcon/>
-                </Avatar>
-                <Typography component="h1" variant="h5">
-                    Sign up
-                </Typography>
-                <form className={ classes.form } noValidate>
+
+                <Avatar className={ classes.avatar }><LockOutlinedIcon/></Avatar>
+                <Typography component="h1" variant="h5">Sign up</Typography>
+
+                <Form className={ classes.form } noValidate>
+
                     <Grid container spacing={ 2 }>
+
                         <Grid item xs={ 12 }>
-                            <TextField
-                                autoComplete="fname"
-                                name="firstName"
-                                variant="outlined"
-                                required
-                                fullWidth
-                                id="firstName"
-                                label="Login"
-                                autoFocus
-                            />
+                            <UsernameFieldSignUp />
                         </Grid>
+
                         <Grid item xs={ 12 }>
-                            <TextField
-                                variant="outlined"
-                                required
-                                fullWidth
-                                id="email"
-                                label="Email Address"
-                                name="email"
-                                autoComplete="email"
-                            />
+                            <EmailFieldSignUp field="email" validate={ value => checkEmailSIgnUp(value) }/>
                         </Grid>
+
                         <Grid item xs={ 12 }>
                             <TextField
                                 variant="outlined"
@@ -88,6 +95,7 @@ export default function SignUp() {
                                 autoComplete="current-password"
                             />
                         </Grid>
+
                         <Grid item xs={ 12 }>
                             <TextField
                                 variant="outlined"
@@ -100,22 +108,26 @@ export default function SignUp() {
                                 autoComplete="current-password"
                             />
                         </Grid>
+
                         <Grid item xs={ 12 }>
                             <FormControlLabel
                                 control={ <Checkbox value="allowExtraEmails" color="primary"/> }
                                 label="I want to receive inspiration, marketing promotions and updates via email."
                             />
                         </Grid>
+
                     </Grid>
-                    <Button
-                        type="submit"
-                        fullWidth
-                        variant="contained"
-                        color="primary"
-                        className={ classes.submit }
-                    >
-                        Sign Up
+
+                    <Button disabled={ !canSubmit }
+                            type="submit"
+                            fullWidth
+                            variant="contained"
+                            color="primary"
+                            className={ classes.submit }>Sign Up
                     </Button>
+
+                    <em>{ isSubmitting ? "Submitting... " : null }</em>
+
                     <Grid container justify="flex-end">
                         <Grid item>
                             <Link to="/sign_in" variant="body2">
@@ -123,11 +135,15 @@ export default function SignUp() {
                             </Link>
                         </Grid>
                     </Grid>
-                </form>
+
+                </Form>
+
             </div>
+
             <Box mt={ 5 }>
                 <Copyright/>
             </Box>
+
         </Container>
     )
 }

@@ -1,23 +1,21 @@
-// eslint-disable-next-line
 import React from "react"
 import { Link } from "react-router-dom"
-import Avatar from '@material-ui/core/Avatar';
-import Button from '@material-ui/core/Button';
-import CssBaseline from '@material-ui/core/CssBaseline';
-import TextField from '@material-ui/core/TextField';
-import FormControlLabel from '@material-ui/core/FormControlLabel';
-import Checkbox from '@material-ui/core/Checkbox';
-import Grid from '@material-ui/core/Grid';
-import Box from '@material-ui/core/Box';
-import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
-import Typography from '@material-ui/core/Typography';
-import { makeStyles } from '@material-ui/core/styles';
-import Container from '@material-ui/core/Container';
+
+import Avatar from '@material-ui/core/Avatar'
+import Button from '@material-ui/core/Button'
+import CssBaseline from '@material-ui/core/CssBaseline'
+import Grid from '@material-ui/core/Grid'
+import Box from '@material-ui/core/Box'
+import LockOutlinedIcon from '@material-ui/icons/LockOutlined'
+import Typography from '@material-ui/core/Typography'
+import { makeStyles } from '@material-ui/core/styles'
+import Container from '@material-ui/core/Container'
 // https://material-ui.com/
-import { useForm, useField, splitFormProps } from "react-form" // https://github.com/tannerlinsley/react-form
+import { useForm } from "react-form" // https://github.com/tannerlinsley/react-form
 
 import { SendToFakeServer as sendToFakeServer } from "./../../dev/FackeServer"
 import { checkEmail } from "./ValidateEmail"
+import { EmailField } from "./EmailField"
 
 import {Copyright} from "./../MaterialUI/Copyright"
 
@@ -41,49 +39,12 @@ const useStyles = makeStyles( theme => ( {
     },
 } ) )
 
-const InputField = React.forwardRef( (props, ref) => {
 
-    const [ field, fieldOptions, rest ] = splitFormProps( props )
-    const {
-        meta: { error, isTouched, isValidating, message },
-        getInputProps
-    } = useField( field, fieldOptions )
-
-    return (
-        <>
-            <TextField { ...getInputProps( { ref, ...rest } ) }
-                       variant="outlined"
-                       margin="normal"
-                       required
-                       fullWidth
-                       id="email"
-                       label="Enter Email Address"
-                       name="email"
-                       autoComplete="email"
-                       autoFocus
-                       error={ !!error }
-                       // helperText={error} /*error message*/
-            />
-            {
-                /* Let's inline some validation and error information for our field */
-            }
-            {
-                isValidating ? ( <em>Validating...</em> ) : isTouched &&
-                error ? ( <strong>{ error }</strong> ) : message
-                    ? ( <small>{ message }</small> ) : null
-            }
-        </>
-    )
-} )
 
 const ResetPassword = () => {
-
     const classes = useStyles()
     const defaultValues = React.useMemo( () => ( {
-            name: "tanner",
-            age: "29",
-            email: "tanner@gmail.com",
-            friends: [ "jaylen" ]
+            email: "tanner@gmail.com"
         } ), []
     )
     const {
@@ -109,11 +70,7 @@ const ResetPassword = () => {
 
                 <Form className={ classes.form }>
 
-                    <InputField
-
-                        field="email"
-                        validate={ value => checkEmail(value) }
-                    />
+                    <EmailField field="email" validate={ value => checkEmail(value) }/>
 
                     <Button disabled={ !canSubmit }
                             type="submit"

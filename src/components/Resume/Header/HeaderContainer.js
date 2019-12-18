@@ -40,7 +40,6 @@ class HeaderComponent extends React.Component {
 const mapStateProps = (state) => {
     return {
         headerInfo: state.header,
-
     }
 }
 
