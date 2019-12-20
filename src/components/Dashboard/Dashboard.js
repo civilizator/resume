@@ -7,13 +7,13 @@ const Dashboard = () => {
             <h1>Dashboard</h1>
             <ul>
                 <li>
-                    <Link to="/registration">Go to for Registration</Link>
+                    <Link to="/sign_up">Go to for Sign up</Link>
                 </li>
                 <li>
-                    <Link to="/signin">Go to for Sign in</Link>
+                    <Link to="/sign_in">Go to for Sign in</Link>
                 </li>
                 <li>
-                    <Link to="/signup">Go to for Sign up</Link>
+                    <Link to="/reset_password">Go to for Reset password</Link>
                 </li>
             </ul>
         </div>
