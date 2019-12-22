@@ -69,7 +69,7 @@ const SignInForm = () => {
             onSubmit={ async (values, {setSubmitting} ) => {
                 // setSubmitting( true )
                 await new Promise( resolve => setTimeout( resolve, 500 ) )
-                console.log( "OnSubmit Sign In: " )
+                console.log( "OnSubmit Sign In: ", values )
                 alert( JSON.stringify( values, null, 2 ) )
                 setSubmitting( false )
             } }
@@ -90,7 +90,7 @@ const SignInForm = () => {
                     submitForm
                 } = props
 
-                console.log( "values: ", values )
+                console.log( "errors: ", errors )
                 return (
                     <form className={ classes.form } noValidate onSubmit={ handleSubmit }>
 

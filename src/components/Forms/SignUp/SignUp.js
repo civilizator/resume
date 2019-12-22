@@ -4,11 +4,9 @@ import Avatar from '@material-ui/core/Avatar'
 import Button from '@material-ui/core/Button'
 import CssBaseline from '@material-ui/core/CssBaseline'
 import TextField from '@material-ui/core/TextField'
-import FormControlLabel from '@material-ui/core/FormControlLabel'
-import Checkbox from '@material-ui/core/Checkbox'
 import Grid from '@material-ui/core/Grid'
 import Box from '@material-ui/core/Box'
-import LockOutlinedIcon from '@material-ui/icons/LockOutlined'
+import InsertEmoticon from '@material-ui/icons/InsertEmoticon'
 import Typography from '@material-ui/core/Typography'
 import { makeStyles } from '@material-ui/core/styles'
 import Container from '@material-ui/core/Container'
@@ -43,7 +41,7 @@ const HeaderSignUp = () => {
     const classes = useStyles()
     return (
         <>
-            <Avatar className={ classes.avatar }><LockOutlinedIcon/></Avatar>
+            <Avatar className={ classes.avatar }><InsertEmoticon/></Avatar>
             <Typography component="h1" variant="h5">Sign up</Typography>
         </>
     )
@@ -51,6 +49,10 @@ const HeaderSignUp = () => {
 
 const validationSchema = Yup.object( {
     username: Yup.string()
+        // .trim()
+        // .strict()
+        .matches(/^[a-zA-Z0-9]+([_-]?[a-zA-Z0-9])*$/,
+            `Should be only alphanumeric characters or single hyphens, and can't begin or end with a hyphen` )
         .min( 4, "Must be at least 4 characters" )
         .max( 40, "Must be no more than 40 characters" )
         .required( 'Required' ),
@@ -58,6 +60,8 @@ const validationSchema = Yup.object( {
         .email( 'Invalid email address' )
         .required( 'Required' ),
     password: Yup.string()
+        .matches(/^[A-Za-z\d~#$^+-=!*()@%&]*$/,
+            `Can be only letters, numbers and special character`)
         .min( 8, "Must be at least 8 characters" )
         .max( 100, "Must be no more than 100 characters" )
         .required( 'Required' )
@@ -72,7 +76,7 @@ const SignUpForm = () => {
             onSubmit={ async (values, {setSubmitting} ) => {
                 // setSubmitting( true )
                 await new Promise( resolve => setTimeout( resolve, 500 ) )
-                console.log( "OnSubmit Sign Up: " )
+                console.log( "OnSubmit Sign Up: ", values )
                 alert( JSON.stringify( values, null, 2 ) )
                 // setSubmitting( false )
             } }
@@ -112,9 +116,7 @@ const SignUpForm = () => {
                                     autoComplete="lname"
                                     // autoFocus
                                     error={ !!( touched.username && errors.username ) }/>
-                                { touched.username && errors.username ? (
-                                    <div>{ errors.username }</div>
-                                ) : null }
+                                { touched.username && errors.username && ( <div>{ errors.username }</div> ) }
                             </Grid>
 
                             <Grid item xs={ 12 }>
@@ -130,9 +132,7 @@ const SignUpForm = () => {
                                     name="email"
                                     autoComplete="email"
                                     error={ !!( touched.email && errors.email ) }/>
-                                { touched.email && errors.email ? (
-                                    <div>{ errors.email }</div>
-                                ) : null }
+                                { touched.email && errors.email && ( <div>{ errors.email }</div> ) }
                             </Grid>
 
                             <Grid item xs={ 12 }>
@@ -149,21 +149,25 @@ const SignUpForm = () => {
                                     id="password"
                                     autoComplete="current-password"
                                     error={ !!( touched.password && errors.password ) }/>
-                                { touched.password && errors.password ? (
-                                    <div>{ errors.password }</div>
-                                ) : null }
+                                { touched.password && errors.password  &&  (
+                                    <div>{ errors.password }</div>) }
                             </Grid>
 
                         </Grid>
 
                         <Button
-                            disabled={ isSubmitting }
+                            // disabled={ isSubmitting }
+                            disabled={
+                                !!( ( touched.username && errors.username )
+                                    || ( touched.email && errors.email )
+                                    || ( touched.password && errors.password )
+                                    || isSubmitting ) }
                             type="submit"
                             fullWidth
                             variant="contained"
                             color="primary"
                             className={ classes.submit }>
-                            {!isSubmitting ? "Sign Up" : "Done"}
+                            { !isSubmitting ? "Sign Up" : "Done" }
                         </Button>
 
                     </form>
