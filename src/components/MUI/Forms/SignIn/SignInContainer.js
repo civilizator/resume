@@ -14,6 +14,7 @@ const SignInContainer = (props) => {
             enterPassword={ enterPassword }
             remember={ remember }
             rememberMe={ rememberMe }
+            useStyles={ props.useStyles }
         />
     )
 }

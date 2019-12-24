@@ -1,109 +1,16 @@
 import React, { useState } from "react"
 import { Link } from "react-router-dom"
-
-import * as Yup from "yup"
-import { Formik } from "formik"
-
-import Avatar from '@material-ui/core/Avatar'
-import Button from '@material-ui/core/Button'
 import CssBaseline from '@material-ui/core/CssBaseline'
 import Grid from '@material-ui/core/Grid'
 import Box from '@material-ui/core/Box'
-import LiveHelp from '@material-ui/icons/LiveHelp'
-import Typography from '@material-ui/core/Typography'
 import Container from '@material-ui/core/Container'
-import TextField from "@material-ui/core/TextField"
-// https://material-ui.com/
 import { Copyright } from "../Copyright/Copyright"
+import { HeaderResetPassword } from "./HeaderResetPassword"
+import { ResetPasswordForm } from "./ResetPasswordForm"
 
-import { useStyles } from "../theme/themeForm"
 
-const validationResetPassword = Yup.object( {
-    email: Yup.string()
-        .email( 'Invalid email address' )
-        .required( 'Required' )
-} )
-
-const HeaderResetPassword = (props) => {
-    const classes = useStyles()
-    const { isErrorAvatar } = props
-
-    return (
-        <>
-            <Avatar className={ !!isErrorAvatar ? classes.avatarError : classes.avatar }><LiveHelp/></Avatar>
-            <Typography component="h1" variant="h5">Reset password</Typography>
-        </>
-    )
-}
-
-const ResetPasswordForm = (props) => {
-    const classes = useStyles()
-    const { setErrorAvatar } = props
-
-    return (
-        <Formik
-            initialValues={ { email: "" } }
-            onSubmit={ async (values) => {
-                await new Promise( resolve => setTimeout( resolve, 500 ) )
-                console.log( "OnSubmit Reset Password: ", values )
-                alert( JSON.stringify( values, null, 2 ) )
-            } }
-            validationSchema={ validationResetPassword }
-        >
-
-            { props => {
-                const {
-                    values,
-                    touched,
-                    errors,
-                    isSubmitting,
-                    handleChange,
-                    handleBlur,
-                    handleSubmit
-                } = props
-
-                return (
-                    <form
-                        className={ classes.form }
-                        noValidate onSubmit={ handleSubmit }
-                        autoComplete="off"
-                    >
-
-                        <TextField
-                            onChange={ handleChange }
-                            onBlur={ handleBlur }
-                            value={ values.email }
-                            placeholder="Please enter your email"
-                            variant="outlined"
-                            margin="normal"
-                            required
-                            fullWidth
-                            id="email"
-                            label="Email Address"
-                            name="email"
-                            autoComplete="email"
-                            error={ !!( touched.email && errors.email ) }
-                        />
-                        { touched.email && errors.email && ( <div>{ errors.email }</div> ) }
-                        { setErrorAvatar( !!errors.email ) }
-
-                        <Button
-                            disabled={ !!( ( touched.email && errors.email ) || isSubmitting ) }
-                            type="submit"
-                            fullWidth
-                            variant="contained"
-                            color="primary"
-                            className={ classes.submit }>{ !isSubmitting ? "Reset" : "Done" }
-                        </Button>
-                    </form>
-                )
-            } }
-
-        </Formik>
-    )
-}
-
-const ResetPassword = () => {
+const ResetPassword = (props) => {
+    const { useStyles } = props
     const classes = useStyles()
     const [ isErrorAvatar, setErrorAvatar ] = useState( !1 )
 
@@ -112,9 +19,15 @@ const ResetPassword = () => {
             <CssBaseline/>
             <div className={ classes.paper }>
 
-                <HeaderResetPassword isErrorAvatar={ isErrorAvatar }/>
+                <HeaderResetPassword
+                    isErrorAvatar={ isErrorAvatar }
+                    useStyles={ useStyles }
+                />
 
-                <ResetPasswordForm setErrorAvatar={ setErrorAvatar }/>
+                <ResetPasswordForm
+                    setErrorAvatar={ setErrorAvatar }
+                    useStyles={ useStyles }
+                />
 
                 <Grid container className={ classes.containerLink }>
                     <Grid item xs>

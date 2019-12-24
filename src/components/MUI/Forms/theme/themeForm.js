@@ -25,6 +25,7 @@ export const useStyles = makeStyles( theme => ( {
             display: 'flex',
             flexDirection: 'column',
             alignItems: 'center',
+
         },
         avatar: {
             margin: theme.spacing( 1 ),
@@ -56,6 +57,13 @@ export const useStyles = makeStyles( theme => ( {
                     color: theme.palette.primary.main
                 }
             }
-        }
-    } )
-)
+        },
+        copyright: {
+            '& a': {
+                color: theme.palette.primary.main,
+                '&:active': {
+                    color: theme.palette.primary.main
+                }
+            }
+        },
+    } ) )
