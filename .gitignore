@@ -27,13 +27,4 @@ src/assets/fonts/
 !/.idea/
 /.idea/
 package-lock.json
-src/components/MUI/Forms/ResetPassword/HeaderResetPassword.js
-src/components/MUI/Forms/ResetPassword/ResetPasswordForm.js
-src/components/MUI/Forms/ResetPassword/validationResetPassword.js
-src/components/MUI/Forms/SignIn/HeaderSignIn.js
-src/components/MUI/Forms/SignIn/SignInForm.js
-src/components/MUI/Forms/SignIn/validationSignIn.js
-src/components/MUI/Forms/SignUp/HeaderSignUp.js
-src/components/MUI/Forms/SignUp/SignUpForm.js
-src/components/MUI/Forms/SignUp/validationSignUp.js
 yarn.lock
