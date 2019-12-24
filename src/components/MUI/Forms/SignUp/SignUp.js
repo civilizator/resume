@@ -12,30 +12,12 @@ import { makeStyles } from '@material-ui/core/styles'
 import Container from '@material-ui/core/Container'
 // https://material-ui.com/
 
-import { Copyright } from "../../MaterialUI/Copyright"
+import { Copyright } from "../Copyright/Copyright"
 import * as Yup from "yup"
 import { Formik } from "formik"
 
+import { useStyles } from "../theme/themeForm"
 
-const useStyles = makeStyles( theme => ( {
-    paper: {
-        marginTop: theme.spacing( 8 ),
-        display: 'flex',
-        flexDirection: 'column',
-        alignItems: 'center',
-    },
-    avatar: {
-        margin: theme.spacing( 1 ),
-        backgroundColor: theme.palette.secondary.main,
-    },
-    form: {
-        width: '100%', // Fix IE 11 issue.
-        marginTop: theme.spacing( 3 ),
-    },
-    submit: {
-        margin: theme.spacing( 3, 0, 2 ),
-    },
-} ) )
 
 const HeaderSignUp = () => {
     const classes = useStyles()
@@ -67,7 +49,7 @@ const validationSchema = Yup.object( {
         .required( 'Required' )
 } )
 
-const SignUpForm = () => {
+const SignUpForm = (props) => {
     const classes = useStyles()
 
     return (
@@ -88,13 +70,10 @@ const SignUpForm = () => {
                     values,
                     touched,
                     errors,
-                    dirty,
                     isSubmitting,
                     handleChange,
                     handleBlur,
-                    handleSubmit,
-                    handleReset,
-                    submitForm
+                    handleSubmit
                 } = props
 
                 console.log( "3: ", isSubmitting )
@@ -180,23 +159,22 @@ const SignUpForm = () => {
     )
 }
 
-export default function SignUp() {
-    const classes = useStyles()
+export default function SignUp(props) {
+    const { classes } = props
 
     return (
         <Container component="main" maxWidth="xs">
             <CssBaseline/>
 
             <div className={ classes.paper }>
-                <HeaderSignUp/>
+                <HeaderSignUp  />
 
                 <SignUpForm/>
 
-                <Grid container justify="flex-end">
+                <Grid container justify="flex-end" className={ classes.containerLink }>
                     <Grid item>
-                        <Link to="/sign_in" variant="body2">
-                            Already have an account? Sign in
-                        </Link>
+                        Already have an account?
+                        <Link to="/sign_in" variant="body2"> Sign in</Link>
                     </Grid>
                 </Grid>
 

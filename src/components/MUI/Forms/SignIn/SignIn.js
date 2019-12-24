@@ -11,33 +11,14 @@ import Grid from '@material-ui/core/Grid'
 import Box from '@material-ui/core/Box'
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined'
 import Typography from '@material-ui/core/Typography'
-import { makeStyles } from '@material-ui/core/styles'
 import Container from '@material-ui/core/Container'
-//https://jaredpalmer.com/formik/docs/tutorial
-import { Formik } from "formik" // https://github.com/jaredpalmer/formik
+
+import { Formik } from "formik" // https://github.com/jaredpalmer/formik https://jaredpalmer.com/formik/docs/tutorial
 import * as Yup from "yup" // https://github.com/jquense/yup
 
-import { Copyright } from "../../MaterialUI/Copyright"
+import { useStyles } from "../theme/themeForm"
 
-const useStyles = makeStyles( theme => ( {
-    paper: {
-        marginTop: theme.spacing( 8 ),
-        display: 'flex',
-        flexDirection: 'column',
-        alignItems: 'center',
-    },
-    avatar: {
-        margin: theme.spacing( 1 ),
-        backgroundColor: theme.palette.secondary.main,
-    },
-    form: {
-        width: '100%', // Fix IE 11 issue.
-        marginTop: theme.spacing( 1 ),
-    },
-    submit: {
-        margin: theme.spacing( 3, 0, 2 ),
-    },
-} ) )
+import { Copyright } from "../Copyright/Copyright"
 
 const HeaderSignIn = () => {
     const classes = useStyles()
@@ -81,13 +62,10 @@ const SignInForm = () => {
                     values,
                     touched,
                     errors,
-                    dirty,
                     isSubmitting,
                     handleChange,
                     handleBlur,
-                    handleSubmit,
-                    handleReset,
-                    submitForm
+                    handleSubmit
                 } = props
 
                 console.log( "errors: ", errors )
@@ -170,17 +148,14 @@ export const SignIn = (props) => {
 
                 <SignInForm/>
 
-                <Grid container>
+                <Grid container className={ classes.containerLink }>
                     <Grid item xs>
-                        <Link to="/reset_password" variant="body2">
-                            Forgot password?
-                        </Link>
+                        <Link to="/reset_password" variant="body2">Forgot password?</Link>
                     </Grid>
 
                     <Grid item>
-                        <Link to="/sign_up" variant="body2">
-                            { "Don't have an account? Sign Up" }
-                        </Link>
+                        Don't have account?
+                        <Link to="/sign_up" variant="body2"> Sign Up</Link>
                     </Grid>
                 </Grid>
 

@@ -5,11 +5,7 @@ import "./App.scss"
 import { PreloaderContainer } from "./components/PreloaderContainer"
 // import * as axios from "axios"
 
-import { SignUp } from "./components/Forms"
-import { SignIn } from "./components/Forms"
-import { ResetPassword } from "./components/Forms"
-import Dashboard from "./components/Dashboard/Dashboard"
-
+import { FormsMUI } from "./components/MUI/MUI"
 
 const App = () => {
     /*
@@ -23,10 +19,8 @@ const App = () => {
     return (
         <Router>
             <Route exact path="/" component={ Main }/>
-            <Route path="/sign_up" component={ SignUp }/>
-            <Route path="/sign_in" component={ SignIn }/>
-            <Route path="/reset_password" component={ ResetPassword }/>
-            <Route path="/dashboard" component={ Dashboard }/>
+
+            <FormsMUI/>
 
             <PreloaderContainer/>
         </Router>

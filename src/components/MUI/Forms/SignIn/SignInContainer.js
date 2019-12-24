@@ -1,7 +1,7 @@
 import React from "react"
 import { connect } from "react-redux"
 import { SignIn } from "./SignIn"
-import { signInEmailCreator, signInPasswordCreator, signInRememberMeCreator } from "../../../redux/sign-in-reducer"
+import { signInEmailCreator, signInPasswordCreator, signInRememberMeCreator } from "../../../../redux/sign-in-reducer"
 
 const SignInContainer = (props) => {
     const { email, enterEmail, password, enterPassword, remember, rememberMe } = props
