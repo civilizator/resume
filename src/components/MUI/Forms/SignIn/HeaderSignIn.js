@@ -5,11 +5,13 @@ import Typography from "@material-ui/core/Typography"
 
 
 export const HeaderSignIn = (props) => {
-    const { useStyles } = props
+    const { isErrorAvatar, useStyles } = props
     const classes = useStyles()
     return (
         <>
-            <Avatar className={ classes.avatar }><LockOutlinedIcon/></Avatar>
+            <Avatar className={ !!isErrorAvatar ? classes.avatarError : classes.avatar }>
+                <LockOutlinedIcon/>
+            </Avatar>
             <Typography component="h1" variant="h5">Sign in</Typography>
         </>
     )

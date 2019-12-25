@@ -7,7 +7,7 @@ import { Formik } from "formik"
 import { validationSignIn } from "./validationSignIn"
 
 export const SignInForm = (props) => {
-    const { useStyles } = props
+    const { setErrorAvatar, useStyles } = props
     const classes = useStyles()
 
     return (
@@ -54,11 +54,13 @@ export const SignInForm = (props) => {
                             error={ !!( touched.email && errors.email ) }
                         />
                         { touched.email && errors.email && ( <div>{ errors.email }</div> ) }
+                        { setErrorAvatar( !!errors.email ) }
 
                         <TextField
                             onChange={ handleChange }
                             onBlur={ handleBlur }
                             value={ values.password }
+                            placeholder="Please enter password"
                             variant="outlined"
                             margin="normal"
                             required
@@ -70,20 +72,24 @@ export const SignInForm = (props) => {
                             autoComplete="current-password"
                             error={ !!( touched.password && errors.password ) }
                         />
+                        { setErrorAvatar( !!errors.password ) }
 
                         <FormControlLabel
                             control={
                                 <Checkbox
                                     onChange={ handleChange }
                                     name="remember"
-                                    color="primary"
+                                    // color="primary"
                                 />
                             }
                             label={ !values.remember ? "Remember Me" : "Remembered" }
                         />
 
                         <Button
-                            disabled={ !!( ( touched.email && errors.email ) || isSubmitting ) }
+                            disabled={
+                                !!( ( touched.email && errors.email )
+                                    || ( touched.password && errors.password )
+                                    || isSubmitting ) }
                             type="submit"
                             fullWidth
                             variant="contained"

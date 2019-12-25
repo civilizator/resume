@@ -17,6 +17,7 @@ const ResetPassword = (props) => {
     return (
         <Container component="main" maxWidth="xs">
             <CssBaseline/>
+
             <div className={ classes.paper }>
 
                 <HeaderResetPassword

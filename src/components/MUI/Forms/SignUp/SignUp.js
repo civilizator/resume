@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useState } from "react"
 import { Link } from "react-router-dom"
 import CssBaseline from '@material-ui/core/CssBaseline'
 import Grid from '@material-ui/core/Grid'
@@ -11,6 +11,7 @@ import { SignUpForm } from "./SignUpForm"
 export default function SignUp(props) {
     const { useStyles } = props
     const classes = useStyles()
+    const [ isErrorAvatar, setErrorAvatar ] = useState( !1 )
 
     return (
         <Container component="main" maxWidth="xs">
@@ -18,9 +19,15 @@ export default function SignUp(props) {
 
             <div className={ classes.paper }>
 
-                <HeaderSignUp useStyles={ useStyles } />
+                <HeaderSignUp
+                    isErrorAvatar={ isErrorAvatar }
+                    useStyles={ useStyles }
+                />
 
-                <SignUpForm useStyles={ useStyles } />
+                <SignUpForm
+                    setErrorAvatar={ setErrorAvatar }
+                    useStyles={ useStyles }
+                />
 
                 <Grid container justify="flex-end" className={ classes.containerLink }>
                     <Grid item>
@@ -31,7 +38,7 @@ export default function SignUp(props) {
 
             </div>
 
-            <Box mt={ 5 }>
+            <Box mt={ 8 }>
                 <Copyright/>
             </Box>
 

@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useState } from "react"
 import { Link } from "react-router-dom"
 import CssBaseline from '@material-ui/core/CssBaseline'
 
@@ -13,16 +13,22 @@ import { SignInForm } from "./SignInForm"
 export const SignIn = (props) => {
     const { useStyles } = props
     const classes = useStyles()
+    const [ isErrorAvatar, setErrorAvatar ] = useState( !1 )
     // const { email, enterEmail, password, enterPassword, remember, rememberMe } = props
 
     return (
         <Container component="main" maxWidth="xs">
             <CssBaseline/>
-            <div className={ classes.paper }>
+            <div className={ classes.paper } >
 
-                <HeaderSignIn useStyles={ useStyles } />
-
-                <SignInForm useStyles={ useStyles } />
+                <HeaderSignIn
+                    isErrorAvatar={ isErrorAvatar }
+                    useStyles={ useStyles }
+                />
+                <SignInForm
+                    setErrorAvatar={ setErrorAvatar }
+                    useStyles={ useStyles }
+                />
 
                 <Grid container className={ classes.containerLink }>
                     <Grid item xs>
@@ -36,9 +42,11 @@ export const SignIn = (props) => {
                 </Grid>
 
             </div>
+
             <Box mt={ 8 }>
                 <Copyright/>
             </Box>
+
         </Container>
     );
 }
