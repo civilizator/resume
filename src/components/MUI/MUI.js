@@ -18,16 +18,12 @@ import { customTheme, useStyles } from "./Forms/theme/themeForm"
 
 export const FormsMUI = () => {
     return (
-        // <Router>
-
-            <MuiThemeProvider theme={ customTheme }>
-                <Route path="/sign_up" component={ () => <SignUp useStyles={ useStyles }/> }/>
-                <Route path="/sign_in" component={ () => <SignInContainer useStyles={ useStyles }/> }/>
-                <Route path="/reset_password" component={ () => <ResetPassword useStyles={ useStyles }/> }/>
-                <Route path="/dashboard" component={ () => <Dashboard/> }/>
-            </MuiThemeProvider>
-
-        // </Router>
+        <MuiThemeProvider theme={ customTheme }>
+            <Route path="/sign_up" component={ () => <SignUp useStyles={ useStyles }/> }/>
+            <Route path="/sign_in" component={ () => <SignInContainer useStyles={ useStyles }/> }/>
+            <Route path="/reset_password" component={ () => <ResetPassword useStyles={ useStyles }/> }/>
+            <Route path="/dashboard" component={ () => <Dashboard/> }/>
+        </MuiThemeProvider>
     )
 }
 

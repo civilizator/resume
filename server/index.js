@@ -32,7 +32,7 @@ router.post( "/auth", bodyParser(), authRoute )
 
 router.get('/my-pets', authenticated, petsRoute)
 
-router.get( "/admin", bodyParser(),(ctx) => {
+router.get( "/admin", bodyParser(), (ctx) => {
     ctx.body = "Hello Admin!"
 } )
 

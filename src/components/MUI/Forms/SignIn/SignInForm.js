@@ -6,23 +6,26 @@ import Button from "@material-ui/core/Button"
 import { Formik } from "formik"
 import { validationSignIn } from "./validationSignIn"
 
+
 export const SignInForm = (props) => {
-    const { setErrorAvatar, useStyles } = props
+    const { login, password, remember } = props
+    const { setErrorAvatar, useStyles, sendSignIn } = props
     const classes = useStyles()
+    let { isErrorLogin, isErrorPassword, isAllErrors } = false
 
     return (
         <Formik
-            initialValues={ { email: "", password: "", remember: false } }
-            onSubmit={ async (values/*, {setSubmitting}*/) => {
-                // setSubmitting( true )
-                await new Promise( resolve => setTimeout( resolve, 500 ) )
-                console.log( "OnSubmit Sign In: ", values )
-                alert( JSON.stringify( values, null, 2 ) )
-                // setSubmitting( false )
-            } }
             validationSchema={ validationSignIn }
+            initialValues={ { login: login, password: password, remember: remember } }
+            onSubmit={ async (values, { setSubmitting }) => {
+                // await new Promise( resolve => setTimeout( resolve, 2500 ) )
+                // alert( JSON.stringify( await sendSignIn( values ), null, 2 ) )
+                // const response = await sendSignIn( values )
+                // console.log(response)
+                await sendSignIn( values )
+                setSubmitting( false )
+            } }
         >
-
             { props => {
                 const {
                     values,
@@ -34,27 +37,34 @@ export const SignInForm = (props) => {
                     handleSubmit
                 } = props
 
+                isErrorLogin = !!( touched.login && errors.login )
+                isErrorPassword = !!( touched.password && errors.password )
+                isAllErrors = isErrorLogin || isErrorPassword || isSubmitting
+                setErrorAvatar( isAllErrors )
+
                 return (
                     <form className={ classes.form } noValidate onSubmit={ handleSubmit }>
+                        {
+                            ( isErrorLogin || isErrorPassword ) && <div>Incorrect username or password.</div>
+                        }
 
                         <TextField
                             onChange={ handleChange }
                             onBlur={ handleBlur }
-                            value={ values.email }
-                            placeholder="Please enter your email"
+                            value={ values.login }
+                            placeholder="Username or email address"
                             variant="outlined"
                             margin="normal"
                             required
                             fullWidth
-                            id="email"
-                            label="Email Address"
-                            name="email"
-                            autoComplete="email"
+                            id="login"
+                            label="Login"
+                            name="login"
+                            autoComplete="login"
                             // autoFocus
-                            error={ !!( touched.email && errors.email ) }
+                            error={ isErrorLogin }
                         />
-                        { touched.email && errors.email && ( <div>{ errors.email }</div> ) }
-                        { setErrorAvatar( !!errors.email ) }
+                        { isErrorLogin && ( <div>{ errors.login }</div> ) }
 
                         <TextField
                             onChange={ handleChange }
@@ -70,13 +80,14 @@ export const SignInForm = (props) => {
                             type="password"
                             id="password"
                             autoComplete="current-password"
-                            error={ !!( touched.password && errors.password ) }
+                            error={ isErrorPassword }
                         />
-                        { setErrorAvatar( !!errors.password ) }
+                        { isErrorPassword && ( <div>{ errors.password }</div> ) }
 
                         <FormControlLabel
                             control={
                                 <Checkbox
+                                    checked={ values.remember }
                                     onChange={ handleChange }
                                     name="remember"
                                     // color="primary"
@@ -86,10 +97,7 @@ export const SignInForm = (props) => {
                         />
 
                         <Button
-                            disabled={
-                                !!( ( touched.email && errors.email )
-                                    || ( touched.password && errors.password )
-                                    || isSubmitting ) }
+                            disabled={ isAllErrors }
                             type="submit"
                             fullWidth
                             variant="contained"

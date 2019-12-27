@@ -5,7 +5,7 @@ import Grid from '@material-ui/core/Grid'
 import Box from '@material-ui/core/Box'
 import Container from '@material-ui/core/Container'
 import { Copyright } from "../Copyright/Copyright"
-import { HeaderResetPassword } from "./HeaderResetPassword"
+import { ResetPasswordHeader } from "./ResetPasswordHeader"
 import { ResetPasswordForm } from "./ResetPasswordForm"
 
 
@@ -20,7 +20,7 @@ const ResetPassword = (props) => {
 
             <div className={ classes.paper }>
 
-                <HeaderResetPassword
+                <ResetPasswordHeader
                     isErrorAvatar={ isErrorAvatar }
                     useStyles={ useStyles }
                 />

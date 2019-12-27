@@ -1,27 +1,71 @@
 import React from "react"
 import { connect } from "react-redux"
 import { SignIn } from "./SignIn"
-import { signInEmailCreator, signInPasswordCreator, signInRememberMeCreator } from "../../../../redux/sign-in-reducer"
+import {
+    signInLoginCreator,
+    signInPasswordCreator,
+    signInRememberMeCreator
+} from "../../../../redux/sign-in-reducer"
+import * as axios from "axios"
+
 
 const SignInContainer = (props) => {
-    const { email, enterEmail, password, enterPassword, remember, rememberMe } = props
+    const { login, setLogin, password, setPassword, remember, setRemember } = props
+
+    const auth = async (data) => {
+        const { login, password } = data
+
+        axios.post(
+            "http://localhost:4000/auth", {
+                'username': login,
+                'password': password
+            } )
+            .then( response => {
+                console.log( response )
+            } )
+            // .catch( error => {
+            //     console.log( error )
+            // } )
+    }
+
+    const sendSignIn = async (values) => {
+
+        let promise = await new Promise( (resolve, reject) => {
+            // setTimeout( () => resolve( values ), 500 )
+            resolve( values )
+        } ).then( (value) => {
+
+            auth( value )
+            // console.log( auth( value )  )
+            return value
+        } )
+
+        // let s = JSON.stringify( await promise, null, 2 )
+        // alert( s )
+        // console.log( promise.login  )
+        // console.log( promise  )
+        // console.log( values.login  )
+        await setLogin( promise.login )
+        await setPassword( promise.password )
+        await setRemember( promise.remember )
+
+        return promise
+    }
 
     return (
         <SignIn
-            email={ email }
-            enterEmail={ enterEmail }
+            login={ login }
             password={ password }
-            enterPassword={ enterPassword }
             remember={ remember }
-            rememberMe={ rememberMe }
             useStyles={ props.useStyles }
+            sendSignIn={ sendSignIn }
         />
     )
 }
 
 const mapStateProps = (state) => {
     return {
-        email: state.signIn.email,
+        login: state.signIn.login,
         password: state.signIn.password,
         remember: state.signIn.remember
     }
@@ -29,13 +73,13 @@ const mapStateProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        enterEmail: (email) => {
-            dispatch( signInEmailCreator( email ) )
+        setLogin: (login) => {
+            dispatch( signInLoginCreator( login ) )
         },
-        enterPassword: (password) => {
+        setPassword: (password) => {
             dispatch( signInPasswordCreator( password ) )
         },
-        rememberMe: (remember) => {
+        setRemember: (remember) => {
             dispatch( signInRememberMeCreator( remember ) )
         }
     }
