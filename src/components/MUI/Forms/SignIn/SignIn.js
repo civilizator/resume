@@ -40,10 +40,12 @@ export const SignIn = (props) => {
                 <Grid container className={ classes.containerLink }>
                     <Grid item xs>
                         <Link to="/reset_password" variant="body2">Forgot password?</Link>
+                        <br/>
+                        ___________
+                        <br/>
+                        <Link to="/dashboard" variant="body2"> Dashboard </Link>
                     </Grid>
-                    <Grid item>
-                        <Link to="/dashboard" variant="body2">my-pets</Link>
-                    </Grid>
+
                     <Grid item>
                         Don't have account?
                         <Link to="/sign_up" variant="body2"> Sign Up</Link>

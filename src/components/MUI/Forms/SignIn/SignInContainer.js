@@ -2,6 +2,7 @@ import React from "react"
 import { connect } from "react-redux"
 import { SignIn } from "./SignIn"
 import {
+    signInCreator,
     signInLoginCreator,
     signInPasswordCreator,
     signInRememberMeCreator
@@ -31,11 +32,12 @@ const SignInContainer = (props) => {
     const sendSignIn = async (values) => {
 
         let promise = await new Promise( (resolve, reject) => {
-            // setTimeout( () => resolve( values ), 500 )
+            // setTimeout( () => resolve( values ), 1500 )
             resolve( values )
         } ).then( (value) => {
 
             auth( value )
+            console.log( value  )
             // console.log( auth( value )  )
             return value
         } )
@@ -45,9 +47,10 @@ const SignInContainer = (props) => {
         // console.log( promise.login  )
         // console.log( promise  )
         // console.log( values.login  )
-        await setLogin( promise.login )
-        await setPassword( promise.password )
-        await setRemember( promise.remember )
+        await props.userSignIn(promise)
+        // await setLogin( promise.login )
+        // await setPassword( promise.password )
+        // await setRemember( promise.remember )
 
         return promise
     }
@@ -73,6 +76,9 @@ const mapStateProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
     return {
+        userSignIn: (userInfo) => {
+            dispatch( signInCreator( userInfo ) )
+        },
         setLogin: (login) => {
             dispatch( signInLoginCreator( login ) )
         },

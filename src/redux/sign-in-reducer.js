@@ -1,6 +1,7 @@
 const LOGIN_SIGN_IN = "LOGIN-SIGN-IN"
 const PASSWORD_SIGN_IN = "PASSWORD-SIGN-IN"
 const REMEMBER_ME_SIGN_IN = "REMEMBER-ME-SIGN-IN"
+const SIGN_IN = "SIGN-IN"
 
 const initialState = {
     login: "stan",
@@ -10,6 +11,10 @@ const initialState = {
 
 const signInReducer = (state = initialState, action) => {
     switch (action.type) {
+        case SIGN_IN: {
+            // console.log( "LOGIN_SIGN_IN: ", action.login )
+            return { ...state, userInfo: action.userInfo }
+        }
         case LOGIN_SIGN_IN: {
             // console.log( "LOGIN_SIGN_IN: ", action.login )
             return { ...state, login: action.login }
@@ -25,6 +30,10 @@ const signInReducer = (state = initialState, action) => {
         default:
             return state
     }
+}
+
+export const signInCreator = (userInfo) => {
+    return { type: SIGN_IN, userInfo }
 }
 
 export const signInLoginCreator = (login) => {
