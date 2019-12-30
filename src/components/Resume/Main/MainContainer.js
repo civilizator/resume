@@ -1,7 +1,7 @@
 import React from "react"
 import { connect } from "react-redux"
 import Main from "./Main"
-import { loaderCreator } from "../../../redux/main-redux"
+import { loaderCreator } from "../../../redusers/main-redux"
 
 
 class MainContainer extends React.Component {

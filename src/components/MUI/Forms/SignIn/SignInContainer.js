@@ -1,7 +1,7 @@
 import React from "react"
 import { connect } from "react-redux"
 import { SignIn } from "./SignIn"
-import { signInCreator, logoutCreator } from "../../../../redux/sign-in-reducer"
+import { signInCreator, logoutCreator } from "../../../../redusers/sign-in-reducer"
 import * as axios from "axios"
 
 

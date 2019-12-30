@@ -3,10 +3,10 @@ import { connect } from "react-redux"
 
 import Header from "./Header"
 
-import { headerLanguageCreator, dataHeader } from "../../../redux/header-reducer"
-import { contactLanguageCreator, dataContact } from "../../../redux/contact-reducer"
-import { experienceLanguageCreator, dataExperience } from "../../../redux/experience-reducer"
-import { additionallyLanguageCreator, dataAdditionally } from "../../../redux/additionally-reducer"
+import { headerLanguageCreator, dataHeader } from "../../../redusers/header-reducer"
+import { contactLanguageCreator, dataContact } from "../../../redusers/contact-reducer"
+import { experienceLanguageCreator, dataExperience } from "../../../redusers/experience-reducer"
+import { additionallyLanguageCreator, dataAdditionally } from "../../../redusers/additionally-reducer"
 
 class HeaderComponent extends React.Component {
 

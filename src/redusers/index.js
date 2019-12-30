@@ -21,7 +21,7 @@ const enhancers = compose(
     window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
 )
 
-const store = createStore(
+const index = createStore(
     reducer,
     enhancers
 )
@@ -29,4 +29,4 @@ const store = createStore(
 
 //window.store = store //store.getState()
 
-export default store
+export default index

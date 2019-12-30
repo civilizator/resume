@@ -15,10 +15,10 @@ const signInReducer = (state = initialState, action) => {
             return {
                 ...state,
                 currentUser: {
-                    ...action.payload,
-                    login: action.payload.login,
-                    password: action.payload.password,
-                    remember: action.payload.remember
+                    ...action.currentUser,
+                    login: action.currentUser.login,
+                    password: action.currentUser.password,
+                    remember: action.currentUser.remember
                 }
             }
         }
@@ -37,8 +37,8 @@ const signInReducer = (state = initialState, action) => {
     }
 }
 
-export const signInCreator = (payload) => {
-    return { type: SIGN_IN_USER, payload }
+export const signInCreator = (currentUser) => {
+    return { type: SIGN_IN_USER, currentUser }
 }
 
 export const logoutCreator = () => {
