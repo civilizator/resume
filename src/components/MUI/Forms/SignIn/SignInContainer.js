@@ -1,17 +1,12 @@
 import React from "react"
 import { connect } from "react-redux"
 import { SignIn } from "./SignIn"
-import {
-    signInCreator,
-    signInLoginCreator,
-    signInPasswordCreator,
-    signInRememberMeCreator
-} from "../../../../redux/sign-in-reducer"
+import { signInCreator, logoutCreator } from "../../../../redux/sign-in-reducer"
 import * as axios from "axios"
 
 
 const SignInContainer = (props) => {
-    const { login, setLogin, password, setPassword, remember, setRemember } = props
+    const { login, password, remember } = props
 
     const auth = async (data) => {
         const { login, password } = data
@@ -37,7 +32,7 @@ const SignInContainer = (props) => {
         } ).then( (value) => {
 
             auth( value )
-            console.log( value  )
+            // console.log( value  )
             // console.log( auth( value )  )
             return value
         } )
@@ -47,7 +42,10 @@ const SignInContainer = (props) => {
         // console.log( promise.login  )
         // console.log( promise  )
         // console.log( values.login  )
+
         await props.userSignIn(promise)
+
+
         // await setLogin( promise.login )
         // await setPassword( promise.password )
         // await setRemember( promise.remember )
@@ -62,31 +60,29 @@ const SignInContainer = (props) => {
             remember={ remember }
             useStyles={ props.useStyles }
             sendSignIn={ sendSignIn }
+            userLogout={ props.userLogout }
         />
     )
 }
 
 const mapStateProps = (state) => {
     return {
-        login: state.signIn.login,
-        password: state.signIn.password,
-        remember: state.signIn.remember
+        // login: state.signIn.login,
+        // password: state.signIn.password,
+        // remember: state.signIn.remember
+        login: state.signIn.currentUser.login,
+        password: state.signIn.currentUser.password,
+        remember: state.signIn.currentUser.remember
     }
 }
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        userSignIn: (userInfo) => {
-            dispatch( signInCreator( userInfo ) )
+        userSignIn: (currentUser) => {
+            dispatch( signInCreator( currentUser ) )
         },
-        setLogin: (login) => {
-            dispatch( signInLoginCreator( login ) )
-        },
-        setPassword: (password) => {
-            dispatch( signInPasswordCreator( password ) )
-        },
-        setRemember: (remember) => {
-            dispatch( signInRememberMeCreator( remember ) )
+        userLogout: () => {
+            dispatch( logoutCreator() )
         }
     }
 }

@@ -9,6 +9,7 @@ import Container from "@material-ui/core/Container"
 import { Copyright } from "../Copyright/Copyright"
 import { SignInHeader } from "./SignInHeader"
 import { SignInForm } from "./SignInForm"
+import Button from "@material-ui/core/Button"
 
 export const SignIn = (props) => {
     const { login, password, remember } = props
@@ -36,6 +37,16 @@ export const SignIn = (props) => {
                     useStyles={ useStyles }
                     sendSignIn={ sendSignIn }
                 />
+
+                <Button
+                    type="submit"
+                    fullWidth
+                    variant="contained"
+                    color="primary"
+                    className={ classes.submit }
+                    onClick={ props.userLogout }
+                >Logout
+                </Button>
 
                 <Grid container className={ classes.containerLink }>
                     <Grid item xs>

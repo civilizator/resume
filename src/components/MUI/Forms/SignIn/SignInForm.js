@@ -8,6 +8,7 @@ import { validationSignIn } from "./validationSignIn"
 
 
 export const SignInForm = (props) => {
+    // const { login = "stan", password = "testPass", remember = false } = props
     const { login, password, remember } = props
     const { setErrorAvatar, useStyles, sendSignIn } = props
     const classes = useStyles()
